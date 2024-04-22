@@ -8,5 +8,9 @@
 #include <sys/wait.h>
 #include <unistd.h>
 
-
+char *lsh_read_line(void);
+char **lsh_split_line(char *line);
+int lsh_execute(char **args);
+void lsh_setup_signals(void);
+void lsh_loop(void);
 #endif
