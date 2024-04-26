@@ -12,5 +12,6 @@ char *lsh_read_line(void);
 char **lsh_split_line(char *line);
 int lsh_execute(char **args);
 void lsh_setup_signals(void);
+void handle_sigint(int sign);
 void lsh_loop(void);
 #endif

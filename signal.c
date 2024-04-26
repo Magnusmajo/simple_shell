@@ -1,7 +1,7 @@
 #include "shell.h"
 #include <signal.h>
 
-void handle_sigint(int signo) {
+void handle_sigint(int sign) {
     printf("\nSe presionó Ctrl+C. No se puede interrumpir la shell.\n");
 }
 

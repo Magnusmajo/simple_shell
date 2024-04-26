@@ -7,7 +7,7 @@
 
 char *lsh_read_line(void) {
 	char *line = NULL;
-	size_t bufsize = 0; // Tamaño inicial de la línea
+	size_t bufsize = 0; 
 
 	if (getline(&line, &bufsize, stdin) == -1) {
 		perror("I'll back: getline");
