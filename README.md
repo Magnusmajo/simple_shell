@@ -1,33 +1,56 @@
-#SIMPLE-SHELL Holberton Project.
------------------------------------------------------------------------------------
-Authors: 
-Alexis Rodriguez
-BRyan Aleman
-Micke Lucas
-***
-### What is a Shell in Computing?
+# Simple Shell
 
-In computing, a shell is a computer program that exposes an operating system's services to a human user or other programs. In general, operating system shells use either a command-line interface (CLI) or graphical user interface (GUI), depending on a computer's role and particular operation. It is named a shell because it is the outermost layer around the operating system.
+Educational command-line shell prototype developed as part of the Holberton School curriculum.
 
-Functioning:
-The shell processes commands entered by the user and sends them to the kernel of the operating system for execution.
-It allows you to explore the directory tree, create, edit, and delete files, and run programs.
-Accessing the Command Line:
-You can access the command line through a terminal (such as xterm, kterm, or gterm).
-Virtual consoles (tty) also provide access to the command line from the graphical interface.
-Logging In on a Virtual Console:
-When prompted for login, enter your username and password.
-If the password is valid, the prompt will appear, indicating a successful connection.
- ***
------------------------------------------------------------------------------------
+## Project overview
 
-## Description
-How does it works
+The program demonstrates a small interactive loop that reads a command, splits it into whitespace-delimited arguments, and launches external programs with the POSIX process APIs.
 
-----------------------------------------------------------------------------------
-## Install
- Colne it directly from our github
-git clone https://github.com/Magnusmajo/simple_shell.git
+The current implementation includes:
 
-----------------------------------------------------------------------------------
+- An interactive prompt (`Shellinator$>`).
+- External command execution through `fork()`, `execvp()` and `waitpid()`.
+- A built-in `cd` command using `chdir()`.
+- A built-in `exit` command.
+- Basic input handling with `getline()`.
+- A separate SIGINT handler implementation.
 
+This is a learning prototype, not a production shell or a complete POSIX shell.
+
+## Source layout
+
+| File | Responsibility |
+| --- | --- |
+| `conf.c` | Program entry point |
+| `lsh_loop.c` | Interactive command loop |
+| `read_line.c` | Reads a line from standard input |
+| `divide.c` | Splits input into whitespace-delimited tokens |
+| `execute_command.c` | Handles built-ins and launches external commands |
+| `signal.c` | Contains a basic SIGINT handler |
+| `shell.h` | Shared declarations and system headers |
+| `my_pid.c` | Separate process-ID experiment; has its own `main()` |
+
+## Current limitations
+
+The implementation is intentionally small. It does not currently provide a complete shell grammar or claim support for:
+
+- Quoted arguments and escaped whitespace.
+- Pipes, redirection, command chaining or environment expansion.
+- Globbing, aliases, command history or job control.
+- Full POSIX signal and terminal handling.
+
+The signal setup function is defined separately; its integration into the main loop should be verified before relying on Ctrl+C behavior.
+
+## Repository hygiene
+
+Generated editor swap files and a previously committed compiled executable have been removed. Keep build outputs, editor temporary files, local configuration and credentials out of version control.
+
+## Contributors
+
+- Alexis Rodriguez
+- Bryan Aleman
+- Micke Lucas
+
+## Status
+
+Historical educational project. The source is preserved for reference and learning; no current automated test suite or production-readiness claim is made.
