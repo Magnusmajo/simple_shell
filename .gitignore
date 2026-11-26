@@ -1,0 +1,7 @@
+/shell
+/a.out
+*.o
+*.swp
+*.swo
+*.core
+core
